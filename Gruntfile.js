@@ -58,9 +58,13 @@ module.exports = function (grunt) {
         }
       }
     },
-    mocha: {
-      index: ['spec/specs.html'],
-      options: {run: true}
+    blanket_mocha: {
+      all: ['spec/specs.html'],
+      options: {
+        threshold : 85,
+        log : true,
+        run: true
+      }
     },
     watch: {
       all: {
@@ -86,5 +90,5 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['concat', 'coffee', 'less', 'uglify', 'mocha', 'shell:visual_spec']);
+  grunt.registerTask('default', ['concat', 'coffee', 'less', 'uglify', 'blanket_mocha', 'shell:visual_spec']);
 };

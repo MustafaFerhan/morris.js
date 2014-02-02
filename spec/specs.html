@@ -15,12 +15,17 @@
   <script type="text/javascript" src="../bower_components/chai-jquery/chai-jquery.js"></script>
   <script type="text/javascript" src="../bower_components/sinon/index.js"></script>
   <script type="text/javascript" src="../bower_components/sinon-chai/lib/sinon-chai.js"></script>
+  <script type="text/javascript" src="../node_modules/blanket/dist/qunit/blanket.min.js"></script>
+  <script type="text/javascript" src="../node_modules/blanket/src/adapters/mocha-blanket.js"></script>
   <script>
     mocha.setup('bdd');
+    if (window.PHANTOMJS) {
+      blanket.options("reporter", "../node_modules/grunt-blanket-mocha/support/grunt-reporter.js");
+    }
     should = chai.should();
   </script>
 
-  <script type="text/javascript" src="../morris.js"></script>
+  <script type="text/javascript" src="../morris.js" data-cover></script>
   <script type="text/javascript" src="../build/spec.js"></script>
   <div id="test" style="width: 400px; height: 200px;"></div>
   <script>
